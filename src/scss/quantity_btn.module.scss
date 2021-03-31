@@ -3,8 +3,10 @@
   font-size: 18px;
   background-color: black;
   color: white;
-  padding: 9px 0.7rem 12px 0.7rem;
+  width: 30px;
+  padding: 9px 0 12px 0;
   cursor: pointer;
+  text-align: center;
 }
 
 .decrease_qty {
@@ -12,29 +14,36 @@
   font-size: 18px;
   background-color: black;
   color: white;
-  padding: 9px 0.86rem 12px 0.86rem;
+  width: 30px;
+  padding: 9px 0 12px 0;
   cursor: pointer;
+  text-align: center;
 }
 
 .quantity {
   border: 1px solid grey;
   font-size: 18px;
-  padding: 9px 1rem 12px 1rem;
+  padding: 9px 0 12px 0;
+  width: 100px;
+  height: 50px;
   font-weight: bolder;
   text-align: center;
 }
 
 @media only screen and (max-width: 800px) {
   .increase_qty {
-    padding: 7px 1rem 10px 1rem;
+    width: 30px;
+    padding: 9px 0 12px 0;
   }
 
   .decrease_qty {
-    padding: 7px 1.21rem 10px 1.11rem;
+    width: 30px;
+    padding: 9px 0 12px 0;
   }
 
   .quantity {
-    padding: 12px 1rem 10px 1rem;
-    font-size: 13px;
+    padding: 9px 0 12px 0;
+    width: 100px;
+    height: 50px;
   }
 }
