@@ -97,6 +97,7 @@ const SliderCart = ({
                     backgroundColor: "black",
                     color: "white",
                     fontWeight: "bolder",
+                    border: "none",
                   }}
                   onClick={onToggle}
                 >
