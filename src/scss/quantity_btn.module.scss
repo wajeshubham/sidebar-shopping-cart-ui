@@ -1,0 +1,40 @@
+.increase_qty {
+  border: 1px solid black;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  padding: 9px 0.7rem 12px 0.7rem;
+  cursor: pointer;
+}
+
+.decrease_qty {
+  border: 1px solid black;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  padding: 9px 0.86rem 12px 0.86rem;
+  cursor: pointer;
+}
+
+.quantity {
+  border: 1px solid grey;
+  font-size: 18px;
+  padding: 9px 1rem 12px 1rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .increase_qty {
+    padding: 7px 1rem 10px 1rem;
+  }
+
+  .decrease_qty {
+    padding: 7px 1.21rem 10px 1.11rem;
+  }
+
+  .quantity {
+    padding: 12px 1rem 10px 1rem;
+    font-size: 13px;
+  }
+}

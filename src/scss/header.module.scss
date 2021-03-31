@@ -1,0 +1,18 @@
+.header {
+  border: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  padding: 0.5rem 1rem;
+}
+
+.cart_items_count {
+  position: absolute;
+  padding: 8px 5px 8px 5px;
+  border-radius: 100%;
+  background-color: red;
+  font-size: 10px;
+  color: white;
+  bottom: auto;
+}
