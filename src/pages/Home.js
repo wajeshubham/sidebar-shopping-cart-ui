@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Product from "../components/Product";
 import SliderCart from "../components/SliderCart";
@@ -24,7 +24,7 @@ function Home() {
     return [];
   };
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       const res = await axios.get(
         "https://jsonware.com/json/a6b935596fa215c28180d41a88b6e6ee.json"
@@ -37,7 +37,7 @@ function Home() {
       console.error("axios error-->", error);
       setIsLoading(false);
     }
-  };
+  }, []);
 
   const onToggle = () => {
     setToggleSidebar(!toggleSidebar);
@@ -92,7 +92,7 @@ function Home() {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   return (
     <>

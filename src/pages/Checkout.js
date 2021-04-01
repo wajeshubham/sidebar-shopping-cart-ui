@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Col, Form, ListGroup, Row, Image } from "react-bootstrap";
 import {
   CheckCircleFill,
@@ -85,7 +85,7 @@ const Checkout = () => {
 
   const shippingAddressForm = () => {
     return (
-      <React.Fragment className={styles.shipping_address_form}>
+      <React.Fragment>
         <Col xs={12}>
           <Form.Label style={{ fontSize: "22px", fontWeight: "900" }}>
             Shipping Address
@@ -406,7 +406,7 @@ const Checkout = () => {
           Order Summery
         </Form.Label>
         {productsInCart.map((product, i) => (
-          <>
+          <React.Fragment key={product.id}>
             <Row className={styles.checkout_products_row}>
               <Col className={styles.checkout_product_img_col} lg={3}>
                 <Image className={styles.prod_img} src={product.src?.large2x} />
@@ -442,7 +442,7 @@ const Checkout = () => {
               </Col>
             </Row>
             <hr className="my-3" style={{ backgroundColor: "#bbbbbb" }}></hr>
-          </>
+          </React.Fragment>
         ))}
         <Row>
           <Col className={styles.coupon_code_input_col} lg={9}>
@@ -499,7 +499,7 @@ const Checkout = () => {
     );
   };
 
-  const populateCart = async () => {
+  const populateCart = useCallback(async () => {
     try {
       const cartItems = await getCartFromLocalhost();
       if (cartItems.length === 0) {
@@ -508,7 +508,9 @@ const Checkout = () => {
       let total = 0;
       cartItems.map((item) => {
         total += parseInt(item.price.replace(/,/g, "")) * item.quantity;
+        return true;
       });
+      setShippingCharges(0);
       setGrandTotal(shippingCharges + total);
       setSubTotal(total);
       setProductsInCart(cartItems);
@@ -517,10 +519,12 @@ const Checkout = () => {
       console.log(e);
       setIsLoading(false);
     }
-  };
+  }, [history, shippingCharges]);
 
   const formValidation = async () => {
-    const emailRegEx = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const emailRegEx = new RegExp(
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+    );
 
     if (!emailRegEx.test(String(contactEmail).toLowerCase())) {
       console.log(contactEmail);
@@ -547,7 +551,7 @@ const Checkout = () => {
 
   useEffect(() => {
     populateCart();
-  }, []);
+  }, [populateCart]);
 
   return (
     <Layout isCheckingOut={true}>
