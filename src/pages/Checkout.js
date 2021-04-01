@@ -304,7 +304,7 @@ const Checkout = () => {
             <span
               className="ml-2"
               style={{
-                fontSize: "17px",
+                fontSize: "15px",
                 verticalAlign: "middle",
                 fontWeight: "600",
               }}
