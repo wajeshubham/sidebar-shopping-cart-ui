@@ -1,32 +1,65 @@
 import React from "react";
 import { Container, Image, Nav, Navbar } from "react-bootstrap";
+import { LockFill } from "react-bootstrap-icons";
 import logo from "../assets/logo.png";
 import styles from "../scss/header.module.scss";
 
-const Header = ({ onToggle, cartLength }) => {
+const Header = ({ onToggle, cartLength, isCheckingOut }) => {
   return (
     <>
       <Navbar className={styles.header}>
-        <Container style={{ position: "relative" }}>
-          <Navbar.Brand href="#home" style={{ fontWeight: "bolder" }}>
+        <Container fluid style={{ position: "relative" }}>
+          <Navbar.Brand href="/" style={{ fontWeight: "bolder" }}>
             <Image src={logo} width="150px" />
           </Navbar.Brand>
-          <Nav.Link style={{ textDecoration: "none" }} onClick={onToggle}>
-            <span
-              className="ml-auto font-weight-bolder"
-              style={{ fontSize: "18px", color: "black", position: "relative" }}
-            >
-              Cart
-              <sub
-                className={styles.cart_items_count}
+          {isCheckingOut ? (
+            <Nav.Link disabled={true}>
+              <span
+                className="ml-auto text-secondary"
                 style={{
-                  display: cartLength > 0 ? "" : "none",
+                  fontSize: "18px",
+                  color: "black",
+                  position: "relative",
                 }}
               >
-                {cartLength}
-              </sub>
-            </span>
-          </Nav.Link>
+                Pay securely{" "}
+                <LockFill
+                  className="mb-1"
+                  size="20"
+                  style={{ verticalAlign: "middle" }}
+                />
+                <sub
+                  className={styles.cart_items_count}
+                  style={{
+                    display: cartLength > 0 ? "" : "none",
+                  }}
+                >
+                  {cartLength}
+                </sub>
+              </span>
+            </Nav.Link>
+          ) : (
+            <Nav.Link style={{ textDecoration: "none" }} onClick={onToggle}>
+              <span
+                className="ml-auto font-weight-bolder"
+                style={{
+                  fontSize: "18px",
+                  color: "black",
+                  position: "relative",
+                }}
+              >
+                Cart
+                <sub
+                  className={styles.cart_items_count}
+                  style={{
+                    display: cartLength > 0 ? "" : "none",
+                  }}
+                >
+                  {cartLength}
+                </sub>
+              </span>
+            </Nav.Link>
+          )}
         </Container>
       </Navbar>
     </>

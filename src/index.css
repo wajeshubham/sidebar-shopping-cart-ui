@@ -2,13 +2,13 @@
 
 body {
   margin: 0;
-  font-family: "Erica One", cursive;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Erica One", cursive !important;
+  font-family: "Montserrat", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */

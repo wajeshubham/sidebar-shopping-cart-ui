@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { ArrowLeft } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import styles from "../scss/slider_cart.module.scss";
 import CartItem from "./CartItem";
 import CustomSpinner from "./CustomSpinner";
@@ -65,9 +66,19 @@ const SliderCart = ({
                   className="py-2 mb-3 btn btn-block"
                   style={{ backgroundColor: "black", color: "white" }}
                 >
-                  <span style={{ fontSize: "18px", fontWeight: "bolder" }}>
-                    CHECKOUT
-                  </span>
+                  <Link to="/checkout">
+                    {" "}
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        fontWeight: "bolder",
+                        color: "white",
+                        textDecoration: "white",
+                      }}
+                    >
+                      CHECKOUT
+                    </span>
+                  </Link>
                 </button>
                 <button
                   className="py-2 btn btn-block"
